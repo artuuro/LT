@@ -1,0 +1,25 @@
+{
+  "name": "little-town",
+  "version": "1.0.3",
+  "description": "Connections network",
+  "main": "index.mjs",
+  "scripts": {
+    "dev": "set NODE_ENV=development&& nodemon --experimental-modules --no-warnings --inspect ./"
+  },
+  "author": "Arthur G.",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "fastify": "^2.3.0",
+    "fastify-helmet": "^3.0.0",
+    "fastify-mongoose": "^0.2.1",
+    "fastify-static": "^2.4.0",
+    "fastify-swagger": "^2.3.2",
+    "mongoose": "^5.5.3"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public/*",
+      "certification/*"
+    ]
+  }
+}
