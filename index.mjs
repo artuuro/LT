@@ -4,6 +4,7 @@ import fastifyHelmet from 'fastify-helmet';
 import fastifyStatic from 'fastify-static';
 import fastifyMongoose from 'fastify-mongoose';
 import fastifySwagger from 'fastify-swagger';
+import fastifyNext from 'fastify-nextjs';
 import { Router, Database, config } from './server';
 
 const conf = config();
@@ -27,13 +28,19 @@ const run = async () => {
     }
 };
 
-server.register(fastifyHelmet, conf.HELMET);
-server.register(fastifyStatic, conf.STATIC);
-server.register(fastifySwagger, conf.SWAGGER);
 server.register(fastifyMongoose, conf.MONGODB).after(async () => {
     const loader = new Database(server);
     await loader.load();
     server.models = loader.models;
+});
+
+server.register(fastifyHelmet, conf.HELMET);
+server.register(fastifyStatic, conf.STATIC);
+server.register(fastifySwagger, conf.SWAGGER);
+server.register(fastifyNext, {
+    dev: conf.development
+}).after(() => {
+    server.next('/');
 });
 
 (async () => {

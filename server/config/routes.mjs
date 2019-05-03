@@ -1,13 +1,5 @@
 export default [{
-    path: '/',
-    method: 'GET',
-    controller: 'landing',
-    schema: {
-        description: 'Returns index.html from ```/public``` folder',
-        summary: 'Fetch landing page'
-    }
-}, {
-    path: '/api/user',
+    path: 'api/user',
     method: 'POST',
     controller: 'user',
     schema: {
@@ -32,7 +24,7 @@ export default [{
         }
     }
 }, {
-    path: '/api/user/auth',
+    path: 'user/auth',
     method: 'POST',
     controller: 'authentication',
     schema: {
@@ -57,7 +49,7 @@ export default [{
         }
     }
 }, {
-    path: '/ping',
+    path: 'ping',
     method: 'GET',
     controller: 'ping',
     schema: {

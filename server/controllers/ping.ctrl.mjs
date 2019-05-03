@@ -1,8 +1,5 @@
 export default class pingController {
-    async get(req, res) {
-        return res.send({
-            'message': 'PONG',
-            'time': new Date()
-        });
+    async get(_req, res) {
+        return { time: new Date() };
     }
 }
