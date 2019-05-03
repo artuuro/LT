@@ -34,14 +34,15 @@ server.register(fastifyMongoose, conf.MONGODB).after(async () => {
     server.models = loader.models;
 });
 
-server.register(fastifyHelmet, conf.HELMET);
-server.register(fastifyStatic, conf.STATIC);
-server.register(fastifySwagger, conf.SWAGGER);
 server.register(fastifyNext, {
     dev: conf.development
 }).after(() => {
     server.next('/');
 });
+
+server.register(fastifyHelmet, conf.HELMET);
+server.register(fastifyStatic, conf.STATIC);
+server.register(fastifySwagger, conf.SWAGGER);
 
 (async () => {
     await routing.init();
