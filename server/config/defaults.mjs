@@ -14,5 +14,6 @@ export default {
         hidePoweredBy: { 
             setTo: 'LT_1.0.3'
         }
-    }
+    },
+    'JWT_SIGN': '_aiicaqw2c0!#[]009k0c9s11cqscjoaisjc2231f'
 };

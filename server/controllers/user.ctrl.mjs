@@ -1,5 +1,5 @@
 export default class userController {
-    async post(req, res) {
+    async post(req) {
         const { User } = this.models;
         
         const store = new User({ ...req.body });

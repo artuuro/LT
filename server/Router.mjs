@@ -10,7 +10,7 @@ export default class Router {
         try {
             for (let route of this.routes) {
                 const handler = new Action(route.controller, this.server);
-                route.path = `/api/${route.path}`;
+                route.path = route.noprefix ? `/${route.path}` : `/api/${route.path}`;
                 route.handler = await handler[route.method.toLowerCase()];
                 if (!route.handler) return this.server.log.error(`Method [${route.controller}]->(${route.method}) not found!`);
                 await this.server.route(route);

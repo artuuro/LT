@@ -1,4 +1,6 @@
-#LT_1.0.5
+# LT_1.0.5
+
+- Backend API boilerplate
 
 ### Prerequesities:
 - MongoDB
@@ -17,4 +19,7 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 
 ### Run:
 ``` yarn dev ```
+
+### Open swagger docs:
+``` https://localhost/docs ```
 

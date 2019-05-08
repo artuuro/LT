@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken';
+
 export default class User {
     constructor(database, Schema) {
         let schema = new Schema({
@@ -25,11 +27,17 @@ export default class User {
             emitIndexErrors: true
         });
 
+        class Functions {
+            static token(user, key) {
+                return jwt.sign(user, key, { expiresIn: '24h' });
+            }
 
-        schema.methods.authenticate = async (credentials) => {
-            console.log(credentials);
-            return false;
-        };
+            static checkExistence(username) {
+                return this.findOne({ username });
+            }
+        }
+
+        schema.loadClass(Functions);
 
         const model = database.model('User', schema);
 

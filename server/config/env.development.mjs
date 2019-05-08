@@ -7,12 +7,12 @@ export default {
         exposeRoute: true,
         swagger: {
             info: {
-                title: 'little.town API',
-                description: 'API documentation for litle.town',
-                version: '1.0.3'
+                title: '[LT] HTTP2 Backend API',
+                description: 'API documentation',
+                version: '1.0.6'
             },
             externalDocs: {
-                url: 'https://localhost',
+                url: 'https://localhost/',
                 description: 'homepage'
             },
             securitySchemes: {},
