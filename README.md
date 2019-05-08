@@ -1,12 +1,15 @@
-# LT_1.0.5
+# LT_1.0.6
 
-- API boilerplate utilising ES6+ without any preprocessors (e.g. babel).
+- API framework utilising NodeJS `--experimental-modules` features.
+
+```
+Please be aware that is an early version of the project which means It's not production ready and code base / logic might change slightly over time.
+```
 
 ### Prerequesities:
-- MongoDB
-- NodeJS 11.14.0
-- nodemon `npm i -g pm2`
-- pm2 `npm i -g pm2`
+- MongoDB (latest) `https://www.mongodb.com/download-center/community`
+- NodeJS (latest) `https://nodejs.org/en/download/current/`
+- nodemon `npm i -g nodemon`
 
 ### Install:
 ``` yarn ```
@@ -22,4 +25,31 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 
 ### Open swagger docs:
 ``` https://localhost/docs ```
+- Or just visit `https://localhost` and click on 'DOCUMENTATION' url.
 
+### Project strucuture:
+> `server` - Simple core classes to jugle controller / routing logic.
+
+> `server/models/*.mjs` - mongoose models.
+
+> `server/models/helpers/*.mjs` - mongoose model helper classes to attach instance / static methods.
+
+> `server/controllers/*.ctrl.mjs` - Controllers linked to route definitions.
+
+> `server/config/default.mjs` - Default configuration for all environments.
+
+> `server/config/env.*.mjs` - Environment specific configuration.
+
+> `server/config/routes.mjs` - Route definitions,
+
+
+### Libraries used:
+```
+"fastify": "^2.3.0"
+"fastify-helmet": "^3.0.0"
+"fastify-mongoose": "^0.2.1"
+"fastify-static": "^2.4.0"
+"fastify-swagger": "^2.3.2"
+"jsonwebtoken": "^8.5.1"
+"mongoose": "^5.5.3"
+```

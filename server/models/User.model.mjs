@@ -1,4 +1,4 @@
-import UserFunctions from './functions/UserFunctions';
+import UserFunctions from './helpers/UserFunctions';
 
 export default class User {
     constructor (database, Schema) {
