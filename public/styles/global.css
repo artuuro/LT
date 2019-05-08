@@ -1,0 +1,26 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+body {
+    background: #fcfcfc;
+}
+
+h3 {
+    color: rgb(122, 203, 228);
+    text-transform: uppercase;
+}
+
+ul {
+    list-style: circle;
+    padding: 0 20px;
+}
+
+.doclink {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+}
+
+.doclink:hover {
+    text-decoration: underline;
+}

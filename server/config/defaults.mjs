@@ -12,8 +12,8 @@ export default {
     },
     'HELMET': {
         hidePoweredBy: { 
-            setTo: 'LT_1.0.3'
+            setTo: 'LT_1.0.6'
         }
     },
-    'JWT_SIGN': '_aiicaqw2c0!#[]009k0c9s11cqscjoaisjc2231f'
+    'JWT_SIGN': 'SIGN_KEY_HERE'
 };

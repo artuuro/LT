@@ -1,8 +1,8 @@
-import jwt from 'jsonwebtoken';
+import UserFunctions from './functions/UserFunctions';
 
 export default class User {
-    constructor(database, Schema) {
-        let schema = new Schema({
+    constructor (database, Schema) {
+        const schema = new Schema({
             username: {
                 type: String,
                 unique: true,
@@ -27,17 +27,7 @@ export default class User {
             emitIndexErrors: true
         });
 
-        class Functions {
-            static token(user, key) {
-                return jwt.sign(user, key, { expiresIn: '24h' });
-            }
-
-            static checkExistence(username) {
-                return this.findOne({ username });
-            }
-        }
-
-        schema.loadClass(Functions);
+        schema.loadClass(UserFunctions);
 
         const model = database.model('User', schema);
 
@@ -45,7 +35,7 @@ export default class User {
             const { name, code } = error;
             if (name == 'MongoError' && code == 11000) {
                 delete error.code;
-                error.message = 'DUPLICATE_USERNAME';
+                error.message = 'ALREADY_TAKEN';
                 error.statusCode = 403;
             }
             return error;

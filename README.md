@@ -1,6 +1,6 @@
 # LT_1.0.5
 
-- Backend API boilerplate
+- API boilerplate utilising ES6+ without any preprocessors (e.g. babel).
 
 ### Prerequesities:
 - MongoDB

@@ -5,18 +5,18 @@ export default class authenticationController {
         const { User } = this.models;
         const { JWT_SIGN } = this.config;
 
-        const userObj = await User.checkExistence(req.body.username);
+        const instance = await User.checkExistence(req.body.username);
 
-        if (!userObj) {
-            let error = new Error('USER_NOT_FOUND');
+        if (!instance) {
+            let error = new Error('NOT_FOUND');
             error.statusCode = 404;
             throw error;
         }
 
-        const signature = await User.token(userObj._doc, JWT_SIGN);
+        const signature = await User.token(instance._doc, JWT_SIGN);
         const response = JSON.stringify({
             token: signature,
-            ...userObj._doc
+            ...instance._doc
         });
 
         return response;
