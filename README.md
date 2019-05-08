@@ -1,9 +1,7 @@
 # LT_1.0.6
 
-- API framework utilising NodeJS `--experimental-modules` features.
-
 ```
-Please be aware that is an early version of the project which means It's not production ready and code base / logic might change slightly over time.
+Please be aware that is very early version of the project which means It's not production ready and code base / logic might change slightly over time.
 ```
 
 ### Prerequesities:

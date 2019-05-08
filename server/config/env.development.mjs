@@ -7,15 +7,20 @@ export default {
         exposeRoute: true,
         swagger: {
             info: {
-                title: '[LT] HTTP2 Backend API',
+                title: 'HTTP2 Backend API',
                 description: 'API documentation',
                 version: '1.0.6'
             },
-            externalDocs: {
-                url: 'https://localhost/',
-                description: 'homepage'
+            securitySchemes: {
+                BasicAuth: {
+                    type: 'https',
+                    scheme: 'basic'
+                },
+                BearerAuth: {
+                    type: 'https',
+                    scheme: 'bearer'
+                }
             },
-            securitySchemes: {},
             host: 'localhost',
             schemes: ['https', 'http', 'ws'],
             consumes: ['application/json'],

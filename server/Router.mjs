@@ -6,14 +6,16 @@ export default class Router {
         this.routes = routes;
     }
 
-    async init() {
+    async link() {
         try {
             for (let route of this.routes) {
                 const handler = new Action(route.controller, this.server);
+                
                 route.path = route.noprefix ? `/${route.path}` : `/api/${route.path}`;
                 route.handler = await handler[route.method.toLowerCase()];
-                if (!route.handler) return this.server.log.error(`Method [${route.controller}]->(${route.method}) not found!`);
+
                 await this.server.route(route);
+
                 this.server.log.info(`Route [${route.path}] linked to [${route.controller}]->(${route.method})`);
             }
         } catch (error) {

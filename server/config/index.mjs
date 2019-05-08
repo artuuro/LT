@@ -17,6 +17,6 @@ export default inject => {
         case dev: Object.assign(configuration, development);
         case inject: Object.assign(configuration, inject);
     }
-    
+
     return configuration;
 }

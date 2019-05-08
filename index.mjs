@@ -1,44 +1,8 @@
+import Loader from './server/Loader';
 
-import fastify from 'fastify';
-import fastifyHelmet from 'fastify-helmet';
-import fastifyStatic from 'fastify-static';
-import fastifyMongoose from 'fastify-mongoose';
-import fastifySwagger from 'fastify-swagger';
-import { Router, Database, config } from './server';
-
-const conf = config();
-
-const server = fastify({
-    http2: true,
-    https: conf.SSL,
-    logger: conf.development,
-    ignoreTrailingSlash: true
+const instance = new Loader({
+    // key: value
 });
 
-const routing = new Router(server, conf.routes);
+instance.run();
 
-const run = async () => {
-    try {
-        await server.listen(conf.PORT);
-        await server.swagger();
-    } catch (error) {
-        server.log.error(error);
-        process.exit(1);
-    }
-};
-
-server.register(fastifyMongoose, conf.MONGODB).after(async () => {
-    const loader = new Database(server);
-    await loader.load();
-    server.models = loader.models;
-    server.config = conf;
-});
-
-server.register(fastifyHelmet, conf.HELMET);
-server.register(fastifyStatic, conf.STATIC);
-server.register(fastifySwagger, conf.SWAGGER);
-
-(async () => {
-    await routing.init();
-    await run();
-})();
