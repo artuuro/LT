@@ -39,9 +39,15 @@ nav > ul > li > a {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    border-radius: 10px;
+}
+nav > ul > li.logo > a {
+    cursor: default;
+}
+nav > ul > li.logo {
+    background: rgb(27, 70, 116);
 }
 
-nav > ul > li:hover {
+nav > ul > li:not(.logo):hover {
     background: rgb(115, 114, 146);
-    cursor: pointer;
 }

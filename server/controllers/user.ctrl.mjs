@@ -1,5 +1,3 @@
-import {} from 'crypto';
-
 export default class userController {
     async post(req) {
         const { User } = this.database.models;

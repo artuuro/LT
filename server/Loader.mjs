@@ -16,17 +16,12 @@ export default class Loader {
             logger: this.config.development,
             ignoreTrailingSlash: true
         });
-
-        this.routing = new Router(this.server, this.config.routes);
         
         this.register();
     }
 
-    async run() {
+    async run () {
         try {
-            if (this.mode.has('API'))   
-                await this.routing.link();
-
             await this.server.listen(this.config.PORT);
 
             if (this.config.development) 
@@ -37,14 +32,19 @@ export default class Loader {
             return process.exit(1);
         }
     }
-    
+
     register () {
         this.server.config = this.config;
         this.server.register(fastifyHelmet, this.config.HELMET);
 
-        this.server.register(fastifyMongoose, this.config.MONGODB).after(async () => {
+        this.server.register(fastifyMongoose, this.config.MONGODB)
+        .after(async () => {
             this.database = new Database(this.server);
+            this.routing = new Router(this.server, this.config.routes);
+
             await this.database.load();
+
+            if (this.mode.has('API')) await this.routing.link();
         });
 
         if (this.mode.has('STATIC')) this.server.register(fastifyStatic, this.config.STATIC);

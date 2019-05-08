@@ -10,7 +10,9 @@ export default class Database {
 
     async load() {
         for (let name of Object.keys(definitions)) {
+
             this.server.log.info(`Loaded model [${name}]`);
+            
             this.models[name] = new definitions[name](this.connection, mongoose.Schema);
         }
     }
