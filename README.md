@@ -5,9 +5,10 @@ Please be aware that is very early version of the project which means It's not p
 ```
 
 ### Prerequesities:
-- MongoDB (latest) `https://www.mongodb.com/download-center/community`
-- NodeJS (latest) `https://nodejs.org/en/download/current/`
-- nodemon `npm i -g nodemon`
+1. NodeJS (latest) `https://nodejs.org/en/download/current/`
+2. MongoDB (latest) `https://www.mongodb.com/download-center/community`
+3. Yarn `npm i -g yarn`
+4. Nodemon `npm i -g nodemon`
 
 ### Install:
 ``` yarn ```
