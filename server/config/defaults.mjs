@@ -4,7 +4,6 @@ import { readFileSync } from 'fs';
  * DO NOT DELETE DEFAULT VARIABLES
  */
 export default {
-    'MODE': ['API', 'STATIC'],
     'PORT': 443,
     'SSL': {
         'key': readFileSync(join(process.cwd(), 'certification', 'localhost-privkey.pem')),

@@ -6,9 +6,9 @@ import fastifySwagger from 'fastify-swagger';
 import { Router, Database, config } from './';
 
 export default class Loader {
-    constructor (args) {
-        this.config = config(args);
-        this.mode = new Set(this.config.MODE);
+    constructor (params) {
+        this.config = config(params);
+        this.modules = new Set(this.config.modules);
 
         this.server = fastify({
             http2: true,
@@ -16,39 +16,55 @@ export default class Loader {
             logger: this.config.development,
             ignoreTrailingSlash: true
         });
-        
-        this.register();
+
+        this.server.log.debug(this.module);
     }
 
     async run () {
         try {
+            await this.register();
             await this.server.listen(this.config.PORT);
-
-            if (this.config.development) 
-                await this.server.swagger();
-
+            await this.server.swagger();
         } catch (error) {
             await this.server.log.error(error);
             return process.exit(1);
         }
     }
 
-    register () {
+    async register () {
         this.server.config = this.config;
         this.server.register(fastifyHelmet, this.config.HELMET);
+        this.server.register(fastifySwagger, this.config.SWAGGER);
 
-        this.server.register(fastifyMongoose, this.config.MONGODB)
-        .after(async () => {
-            this.database = new Database(this.server);
-            this.routing = new Router(this.server, this.config.routes);
+        const conditions = [{
+            check: this.modules.has('DATA'),
+            action: async () => {
+                return this.server.register(fastifyMongoose, this.config.MONGODB)
+                .after(() => {
+                    this.database = new Database(this.server);
+                    this.database.load();
+                });
+            }
+        }, {
+            check: this.modules.has('STATIC'),
+            action: async () => {
+                return this.server.register(fastifyStatic, this.config.STATIC);
+            }
+        }, {
+            check: this.modules.has('ROUTER'),
+            action: async () => {
+                this.routing = new Router(this.server, this.config.routes); 
+                this.routing.link(); 
+                return this.routing;
+            }
+        }];
 
-            await this.database.load();
-
-            if (this.mode.has('API')) await this.routing.link();
+        await conditions.map(async item => {
+            if (item.check) {
+                await item.action();
+            }
         });
 
-        if (this.mode.has('STATIC')) this.server.register(fastifyStatic, this.config.STATIC);
-        if (this.config.development) this.server.register(fastifySwagger, this.config.SWAGGER);
     }
 
 }

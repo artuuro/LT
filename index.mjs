@@ -1,7 +1,11 @@
 import Loader from './server/Loader';
 
 const instance = new Loader({
-    'MODE': ['STATIC'],
+    'modules': [
+        'ROUTER', 
+        'STATIC', 
+        'DATA'
+    ]
 });
 
 instance.run();

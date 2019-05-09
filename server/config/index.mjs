@@ -3,20 +3,22 @@ import routes from './routes';
 import development from './env.development';
 import production from './env.production';
 
-export default inject => {
-    const dev = process.env.NODE_ENV == 'development';
+export default (params) => {
+    const dev = process.env.NODE_ENV === 'development';
 
-    const configuration = {
+    let configuration = {
         ...defaults,
         development: dev,
         routes: routes
     };
 
-    switch (true) {
-        case !dev: Object.assign(configuration, production);
-        case dev: Object.assign(configuration, development);
-        case inject: Object.assign(configuration, inject);
+    if (configuration.development) {
+        configuration = Object.assign(configuration, development);
+    } else {
+        configuration = Object.assign(configuration, production);
     }
+
+    configuration = Object.assign(configuration, params);
 
     return configuration;
 }
