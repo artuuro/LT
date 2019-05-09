@@ -1,4 +1,4 @@
-# LT_1.0.6
+## LT alpha (1.0.6)
 
 ```
 Please be aware that is very early version of the project which means It's not production ready and code base / logic might change slightly over time.
