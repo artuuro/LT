@@ -37,7 +37,8 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 - `server/controllers/*.ctrl.mjs` - Controllers linked to route definitions.
 - `server/config/default.mjs` - Default configuration for all environments.
 - `server/config/env.*.mjs` - Environment specific configuration.
-- `server/config/routes.mjs` - Route definitions,
+- `server/config/routes.mjs` - Route definitions.
+- `app/*` - React APP with SSR support
 
 
 ### Libraries used:
