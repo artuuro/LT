@@ -1,5 +1,7 @@
 ## LT alpha (1.0.6)
 
+- RMF Boilerplate (React, Mongo, Fastify)
+
 ```
 Please be aware that is very early version of the project which means It's not production ready and code base / logic might change slightly over time.
 ```
@@ -43,8 +45,12 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 "fastify": "^2.3.0"
 "fastify-helmet": "^3.0.0"
 "fastify-mongoose": "^0.2.1"
+"fastify-nextjs": "^4.1.0"
 "fastify-static": "^2.4.0"
 "fastify-swagger": "^2.3.2"
 "jsonwebtoken": "^8.5.1"
 "mongoose": "^5.5.3"
+"next": "^8.1.0"
+"react": "^16.8.6"
+"react-dom": "^16.8.6"
 ```
