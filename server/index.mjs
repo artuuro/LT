@@ -3,7 +3,7 @@ import Router from './Router';
 import config from './config';
 
 export {
-    Router,
     Database,
+    Router,
     config
 }

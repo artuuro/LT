@@ -1,4 +1,4 @@
-import Action from './Action';
+import Handler from './Handler';
 
 export default class Router {
     constructor (server, routes) {
@@ -9,9 +9,9 @@ export default class Router {
     async link() {
         try {
             for (let route of this.routes) {
-                const handler = new Action(route.controller, this.server);
-                
-                route.path = route.noprefix ? `/${route.path}` : `/api/${route.path}`;
+                const handler = new Handler(route.controller, this.server);
+
+                route.path = route.topLevel ? `/api/${route.path}` : `/${route.path}`;
                 route.handler = await handler[route.method.toLowerCase()];
 
                 await this.server.route(route);

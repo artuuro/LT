@@ -3,9 +3,9 @@ import routes from './routes';
 import development from './env.development';
 import production from './env.production';
 
-export default (params) => {
-    const dev = process.env.NODE_ENV === 'development';
+const dev = process.env.NODE_ENV.trim() == 'development';
 
+export default (params) => {
     let configuration = {
         ...defaults,
         development: dev,

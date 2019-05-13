@@ -20,7 +20,9 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 ```
 
 ### Run:
-``` yarn dev ```
+- Development: `yarn dev` - Runs nodemon and debug mode.
+- Production: `yarn start` - Runs without logging, app from build.
+- Build: `yarn build` - You guess.
 
 ### Open swagger docs:
 ``` https://localhost/docs ```

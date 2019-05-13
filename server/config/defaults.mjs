@@ -1,8 +1,6 @@
 import { join } from 'path';
 import { readFileSync } from 'fs';
-/**
- * DO NOT DELETE DEFAULT VARIABLES
- */
+
 export default {
     'PORT': 443,
     'SSL': {
@@ -10,7 +8,8 @@ export default {
         'cert': readFileSync(join(process.cwd(), 'certification', 'localhost-cert.pem'))
     },
     'STATIC': {
-        'root': join(process.cwd(), 'public')
+        'root': join(process.cwd(), 'public'),
+        'prefix': '/assets/'
     },
     'HELMET': {
         hidePoweredBy: { 

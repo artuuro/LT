@@ -1,5 +1,5 @@
 export default [{
-    path: 'user',
+    path: 'api/user',
     method: 'POST',
     controller: 'user',
     schema: {
@@ -24,7 +24,7 @@ export default [{
         }
     }
 }, {
-    path: 'user/auth',
+    path: 'api/user/auth',
     method: 'POST',
     controller: 'authentication',
     schema: {

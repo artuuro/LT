@@ -4,7 +4,8 @@ const instance = new Loader({
     'modules': [
         'ROUTER', 
         'STATIC', 
-        'DATA'
+        'DATA',
+        'PWA'
     ]
 });
 

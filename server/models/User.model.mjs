@@ -1,4 +1,4 @@
-import UserFunctions from './helpers/UserFunctions';
+import { userFn } from './functions';
 
 export default class User {
     constructor (database, Schema) {
@@ -27,7 +27,7 @@ export default class User {
             emitIndexErrors: true
         });
 
-        schema.loadClass(UserFunctions);
+        schema.loadClass(userFn);
 
         const model = database.model('User', schema);
 

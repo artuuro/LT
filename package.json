@@ -1,11 +1,13 @@
 {
   "name": "little-town",
   "version": "1.0.6",
-  "description": "API framework utilising NodeJS built-in experimental features",
+  "description": "Fastify, Mongo, React",
   "type": "module",
   "main": "index.mjs",
   "scripts": {
-    "dev": "set NODE_ENV=development&& nodemon --es-module-specifier-resolution=node --experimental-modules --no-warnings --inspect ./"
+    "dev": "set NODE_ENV=development && nodemon --es-module-specifier-resolution=node --experimental-modules --no-warnings --inspect ./",
+    "start": "yarn build && set NODE_ENV=production && node --es-module-specifier-resolution=node --experimental-modules --no-warnings ./",
+    "build": "next build app"
   },
   "author": "Arthur G.",
   "license": "UNLICENSED",
@@ -13,15 +15,21 @@
     "fastify": "^2.3.0",
     "fastify-helmet": "^3.0.0",
     "fastify-mongoose": "^0.2.1",
+    "fastify-nextjs": "^4.1.0",
     "fastify-static": "^2.4.0",
     "fastify-swagger": "^2.3.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.5.3"
+    "mongoose": "^5.5.3",
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "nodemonConfig": {
     "ignore": [
       "public/*",
-      "certification/*"
+      "certification/*",
+      "pages/*",
+      "app-build/*"
     ]
   }
 }
