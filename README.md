@@ -31,7 +31,7 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 ### Project strucuture:
 - `server` - Simple core classes to jugle controller / routing logic.
 - `server/models/*.mjs` - mongoose models.
-- `server/models/helpers/*.mjs` - mongoose model helper classes to attach instance / static methods.
+- `server/models/functions/*.fn.mjs` - mongoose model functions.
 - `server/controllers/*.ctrl.mjs` - Controllers linked to route definitions.
 - `server/config/default.mjs` - Default configuration for all environments.
 - `server/config/env.*.mjs` - Environment specific configuration.
