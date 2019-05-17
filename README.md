@@ -15,7 +15,7 @@ Docs will come with time as soon as I'll have my main roadmap done on this.
 4. Nodemon `npm i -g nodemon`
 
 ### Install:
-``` yarn ```
+``` yarn && yarn upgrade ```
 
 - Generate localhost certs at `certification` folder:
 ```
@@ -52,15 +52,19 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 
 ### Libraries used:
 ```
+"@material-ui/core": "^4.0.0-beta.2"
+"@material-ui/icons": "^4.0.0-beta.0"
 "fastify": "^2.3.0"
 "fastify-helmet": "^3.0.0"
 "fastify-mongoose": "^0.2.1"
 "fastify-nextjs": "^4.1.0"
 "fastify-static": "^2.4.0"
 "fastify-swagger": "^2.3.2"
+"isomorphic-unfetch": "^3.0.0"
 "jsonwebtoken": "^8.5.1"
 "mongoose": "^5.5.3"
 "next": "^8.1.0"
 "react": "^16.8.6"
 "react-dom": "^16.8.6"
+"sonic-boom": "^0.7.3"
 ```
