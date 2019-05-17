@@ -3,10 +3,9 @@ import Loader from './server/Loader';
 const instance = new Loader({
     'features': [
         'API', 
-        'STATIC', 
-        'DATABASE',
-        'PWA'
-    ]
+        'DATABASE'
+    ],
+    'PORT': 8080
 });
 
 instance.run();

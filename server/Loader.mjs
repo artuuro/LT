@@ -10,12 +10,14 @@ export default class Loader {
     constructor(params) {
         this.config = config(params);
         this.modules = new Set(this.config.features);
+
         this.server = fastify({
-            http2: true,
+            http2: this.config.HTTP2,
             https: this.config.SSL,
             logger: this.config.development,
             ignoreTrailingSlash: true
         });
+        
         this.server.log.info({
             features: this.config.features
         });

@@ -16,5 +16,6 @@ export default {
             setTo: '0.0.7'
         }
     },
+    'HTTP2': false,
     'JWT_SIGN': 'SIGN_KEY_HERE'
 };

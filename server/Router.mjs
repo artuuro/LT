@@ -28,10 +28,6 @@ export default class Router {
                             queue.push(instance.handle());
                         }
 
-                        const runQueue = await Promise.all(queue);
-
-                        console.log(runQueue);
-
                         // If one of promises will fail it should ideally return an error 
                         return Promise.all(queue); 
                     };

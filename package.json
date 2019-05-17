@@ -5,8 +5,10 @@
   "type": "module",
   "main": "index.mjs",
   "scripts": {
-    "dev": "set NODE_ENV=development && nodemon --es-module-specifier-resolution=node --experimental-modules --no-warnings --inspect ./",
-    "start": "yarn build && set NODE_ENV=production && node --es-module-specifier-resolution=node --experimental-modules --no-warnings ./",
+    "dev:server": "set NODE_ENV=development && nodemon --es-module-specifier-resolution=node --experimental-modules --no-warnings --inspect ./api",
+    "dev:client": "set NODE_ENV=development && nodemon --es-module-specifier-resolution=node --experimental-modules --no-warnings ./client",
+    "prod:server": "set NODE_ENV=production && node --es-module-specifier-resolution=node --experimental-modules --no-warnings ./api",
+    "prod:client": "yarn build && set NODE_ENV=production && node --es-module-specifier-resolution=node --experimental-modules --no-warnings ./client",
     "build": "next build app"
   },
   "author": "Arthur G.",

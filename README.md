@@ -1,9 +1,11 @@
-## LT alpha (1.0.6)
-
-- Mongo, Fastify, Next ?
+## MFN (Mongo, Fastify, Next) Boilerplate
 
 ```
 Please be aware that is very early version of the project which means It's not production ready and code base / logic might change slightly over time.
+```
+
+```
+Docs will come with time as soon as I'll have my main roadmap done on this.
 ```
 
 ### Prerequesities:
@@ -22,9 +24,15 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 ```
 
 ### Run:
-- Development: `yarn dev` - Runs nodemon and debug mode.
-- Production: `yarn start` - Runs without logging, app from build.
-- Build: `yarn build` - You guess.
+- Development: 
+    * `yarn dev:server` - Runs API server with nodemon and chrome debugger
+    * `yarn dev:client` - Runs Next (react) app in development mode
+
+- Production:
+    * `yarn prod:server` - Runs API server without logging
+    * `yarn dev:server` - Builds & Runs next app from build
+
+- Build: `yarn build` - Manually re-build Next app.
 
 ### Open swagger docs:
 ``` https://localhost/docs ```
@@ -38,6 +46,7 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 - `server/config/default.mjs` - Default configuration for all environments.
 - `server/config/env.*.mjs` - Environment specific configuration.
 - `server/config/routes.mjs` - Route definitions.
+- `server/middlewares/*.mjs` - Route middlewares.
 - `app/*` - React APP with SSR support
 
 

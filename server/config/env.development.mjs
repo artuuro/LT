@@ -7,9 +7,9 @@ export default {
         exposeRoute: true,
         swagger: {
             info: {
-                title: 'HTTP2 Backend API',
+                title: 'API Specifications',
                 description: 'API documentation',
-                version: '1.0.6'
+                version: '0.0.8'
             },
             securitySchemes: {
                 BasicAuth: {
