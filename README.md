@@ -1,6 +1,6 @@
 ## LT alpha (1.0.6)
 
-- RMF Boilerplate (React, Mongo, Fastify)
+- Mongo, Fastify, Next ?
 
 ```
 Please be aware that is very early version of the project which means It's not production ready and code base / logic might change slightly over time.

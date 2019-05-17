@@ -1,11 +1,12 @@
 export default class pingController {
-    async get(req, res) {
+    async get(req, reply) {
         
-        await res.type('application/json').code(200);
-
-        return { 
+        await reply.type('application/json').code(200);
+        
+        return {
             message: 'PONG',
-            time: new Date() 
+            development: this.config.development,
+            time: new Date()
         };
     }
 }

@@ -21,4 +21,4 @@ export default (params) => {
     configuration = Object.assign(configuration, params);
 
     return configuration;
-}
+};

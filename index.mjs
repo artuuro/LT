@@ -1,10 +1,10 @@
 import Loader from './server/Loader';
 
 const instance = new Loader({
-    'modules': [
-        'ROUTER', 
+    'features': [
+        'API', 
         'STATIC', 
-        'DATA',
+        'DATABASE',
         'PWA'
     ]
 });

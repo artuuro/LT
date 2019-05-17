@@ -13,7 +13,7 @@ export default {
     },
     'HELMET': {
         hidePoweredBy: { 
-            setTo: 'LT_1.0.6'
+            setTo: '0.0.7'
         }
     },
     'JWT_SIGN': 'SIGN_KEY_HERE'

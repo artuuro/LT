@@ -6,4 +6,4 @@ export {
     authentication,
     user,
     ping
-}
+};

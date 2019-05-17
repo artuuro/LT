@@ -1,17 +1,13 @@
-import React from 'react'
-import { withRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+import HomeButton from '../components/LinkButton';
 
-class Login extends React.Component {
+const Header = dynamic(() => import('../components/Header'));
 
-    async componentDidMount() {
-        console.log('Mounted');
-    }
-
-    render() {
-        return (
-            <div>YO</div>
-        );
-    }
-}
-
-export default withRouter(Login);
+export default () => {
+  return (
+    <div>
+        <Header title="Authentication page" />
+        <HomeButton />
+    </div>
+  );
+};

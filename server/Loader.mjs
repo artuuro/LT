@@ -9,16 +9,16 @@ import { Database, Router, config } from './';
 export default class Loader {
     constructor(params) {
         this.config = config(params);
-        this.modules = new Set(this.config.modules);
-
+        this.modules = new Set(this.config.features);
         this.server = fastify({
             http2: true,
             https: this.config.SSL,
             logger: this.config.development,
             ignoreTrailingSlash: true
         });
-
-        this.server.log.debug(this.module);
+        this.server.log.info({
+            features: this.config.features
+        });
     }
 
     async run() {
@@ -35,13 +35,18 @@ export default class Loader {
     async register() {
         const self = this;
         try {
+            await self.server.register(fastifyHelmet, self.config.HELMET);
+
+            if (self.config.development) {
+                process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+                await self.server.register(fastifySwagger, self.config.SWAGGER);
+            }
+
+            // might need config at routes?
             self.server.config = self.config;
 
-            await self.server.register(fastifyHelmet, self.config.HELMET);
-            await self.server.register(fastifySwagger, self.config.SWAGGER);
-
             const conditions = [{
-                check: self.modules.has('DATA'),
+                check: self.modules.has('DATABASE'),
                 action: async () => {
                     return self.server.register(fastifyMongoose, self.config.MONGODB)
                         .after(() => {
@@ -57,18 +62,29 @@ export default class Loader {
             }, {
                 check: self.modules.has('PWA'),
                 action: async () => {
-                    return self.server.register(fastifyNext, {
-                        dev: self.config.development,
-                        dir: './app'
-                    }).after(() => {
-                        self.server.log.info(`PWA attached`);
-                        self.server.next('/*', (app, req, reply) => {
-                            app.handleRequest(req.req, reply.res);
+
+                    const registerNext = async () => {
+                        return new Promise((resolve, reject) => {
+                            self.server.register(fastifyNext, {
+                                dev: self.config.development,
+                                dir: './app'
+                            }).after(() => {
+                                if (!self.server.next) {
+                                    reject();
+                                }
+                                self.server.next('/*', (app, req, reply) => {
+                                    app.handleRequest(req.req, reply.res);
+                                });
+                                resolve();
+                            });
                         });
-                    });                
+                    }
+
+                    await registerNext();
+                    self.server.log.info(`PWA Attached`);
                 }
             }, {
-                check: self.modules.has('ROUTER'),
+                check: self.modules.has('API'),
                 action: async () => {
                     self.routing = new Router(self.server, self.config.routes);
                     self.routing.link();
@@ -82,13 +98,9 @@ export default class Loader {
                 }
             });
 
-
-
         } catch (error) {
             throw new Error(`Failed to load server`, error);
         }
-
-
 
     }
 

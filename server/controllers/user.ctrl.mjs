@@ -5,7 +5,7 @@ export default class userController {
         const instance = new User({ ...req.body });
 
         await instance.save();
-
+        
         return JSON.stringify(store);
     }
 }

@@ -55,5 +55,6 @@ export default [{
     schema: {
         description: 'Simple ping endpoint',
         summary: 'ping-pong'
-    }
+    },
+    middlewares: ['Authentication']
 }];
