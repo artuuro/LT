@@ -11,7 +11,7 @@ export default (params) => {
         development: dev,
         routes: routes
     };
-
+    
     if (configuration.development) {
         configuration = Object.assign(configuration, development);
     } else {

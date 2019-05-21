@@ -67,7 +67,7 @@ export default class Loader {
 
                     const registerNext = async () => {
                         return new Promise((resolve, reject) => {
-                            self.server.register(fastifyNext, {
+                            return self.server.register(fastifyNext, {
                                 dev: self.config.development,
                                 dir: './app'
                             }).after(() => {

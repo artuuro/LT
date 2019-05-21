@@ -9,4 +9,3 @@ const instance = new Loader({
 });
 
 instance.run();
-

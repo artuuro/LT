@@ -2,10 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 
 class Header extends React.Component {
-
-    constructor(properties) {
+    constructor() {
         super();
-        this.attr = properties;
     }
 
     render() {
@@ -16,7 +14,7 @@ class Header extends React.Component {
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" 
                 />
                 <title>
-                    { this.attr.title ? this.attr.title : 'MISSING_TITLE' }
+                    { this.props.title ? this.props.title : 'MISSING_TITLE' }
                 </title>
             </Head>
         );

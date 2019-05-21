@@ -1,12 +1,30 @@
-import {
-  Header, HomePage
-} from '../components';
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
+import { loadUsers, loadTodos } from '../actions';
+import Header from '../components/Header';
+import Users from '../components/Users';
 
-const Index = () => (
-  <div>
-    <Header title="Home" />
-    <HomePage />
-  </div>
-);
+class Index extends React.Component {
+  static async getInitialProps (props) {
+    const { store, isServer } = props.ctx;
 
-export default Index;
+    if (!store.getState().users || !store.getState().todos) {
+      await store.dispatch(loadUsers());
+      await store.dispatch(loadTodos());
+    }
+
+    return { isServer };
+  }
+
+  render () {
+    return (
+      <div>
+        <Header title="Users" />
+        <Users />
+      </div>
+    )
+  }
+}
+
+export default withRouter(connect()(Index));

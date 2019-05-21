@@ -20,7 +20,6 @@ export default class Router {
                     route.beforeHandler = async (request, reply) => {
                         let queue = [];
                         
-                        // We would like to map that middlewares to a queue in order as from config
                         for (const item of route.middlewares) {
                             const instance = new Middleware[item](this.server, request, reply);
 
@@ -28,7 +27,6 @@ export default class Router {
                             queue.push(instance.handle());
                         }
 
-                        // If one of promises will fail it should ideally return an error 
                         return Promise.all(queue); 
                     };
                 }
