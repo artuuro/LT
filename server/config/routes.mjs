@@ -49,7 +49,7 @@ export default [{
         }
     }
 }, {
-    path: 'ping',
+    path: '',
     method: 'GET',
     controller: 'ping',
     schema: {

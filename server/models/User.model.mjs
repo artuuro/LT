@@ -1,6 +1,6 @@
 import { userFn } from './functions';
 
-export default class User {
+export default class {
     constructor (database, Schema) {
         const schema = new Schema({
             username: {

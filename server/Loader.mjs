@@ -3,10 +3,9 @@ import fastifyHelmet from 'fastify-helmet';
 import fastifyStatic from 'fastify-static';
 import fastifyMongoose from 'fastify-mongoose';
 import fastifySwagger from 'fastify-swagger';
-import fastifyNext from 'fastify-nextjs';
 import { Database, Router, config } from './';
 
-export default class Loader {
+export default class {
     constructor(params) {
         this.config = config(params);
         this.modules = new Set(this.config.features);
@@ -44,61 +43,30 @@ export default class Loader {
                 await self.server.register(fastifySwagger, self.config.SWAGGER);
             }
 
-            // might need config at routes?
             self.server.config = self.config;
 
-            const conditions = [{
+            // Find out if module enabled & run conditionally:
+            [{
                 check: self.modules.has('DATABASE'),
-                action: async () => {
-                    return self.server.register(fastifyMongoose, self.config.MONGODB)
-                        .after(() => {
-                            self.database = new Database(self.server);
-                            self.database.load();
-                        });
+                action: () => {
+                    self.server.register(fastifyMongoose, self.config.MONGODB)
+                    .after(() => {
+                        self.database = new Database(self.server);
+                        self.database.load();
+                    });
                 }
             }, {
                 check: self.modules.has('STATIC'),
-                action: async () => {
-                    return self.server.register(fastifyStatic, self.config.STATIC);
-                }
-            }, {
-                check: self.modules.has('PWA'),
-                action: async () => {
-
-                    const registerNext = async () => {
-                        return new Promise((resolve, reject) => {
-                            return self.server.register(fastifyNext, {
-                                dev: self.config.development,
-                                dir: './app'
-                            }).after(() => {
-                                if (!self.server.next) {
-                                    reject();
-                                }
-                                self.server.next('/*', (app, req, reply) => {
-                                    app.handleRequest(req.req, reply.res);
-                                });
-                                resolve();
-                            });
-                        });
-                    }
-
-                    await registerNext();
-                    self.server.log.info(`PWA Attached`);
+                action: () => {
+                    self.server.register(fastifyStatic, self.config.STATIC);
                 }
             }, {
                 check: self.modules.has('API'),
-                action: async () => {
+                action: () => {
                     self.routing = new Router(self.server, self.config.routes);
                     self.routing.link();
-                    return self.routing;
                 }
-            }];
-
-            await conditions.map(async item => {
-                if (item.check) {
-                    await item.action();
-                }
-            });
+            }].map(item => item.check ? item.action() : false);
 
         } catch (error) {
             throw new Error(`Failed to load server`, error);

@@ -1,10 +1,7 @@
-export default class connectionFn {
-    // Should work on Connection instance only
+export default class {
     connect() {
         this.isAlive = true;
     }
-
-    // Same here
     disconnect() {
         this.isAlive = false;
     }

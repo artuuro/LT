@@ -1,4 +1,4 @@
-export default class Authentication {
+export default class {
     constructor (database, Schema) {
         const schema = new Schema({
             user: {

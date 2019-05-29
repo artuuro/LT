@@ -1,6 +1,6 @@
 import { connectionFn } from './functions';
 
-export default class Connection {
+export default class {
     constructor (database, Schema) {
         const schema = new Schema({
             user: {
@@ -28,7 +28,7 @@ export default class Connection {
 
         schema.loadClass(connectionFn);
 
-        const model = database.model('Authentication', schema);
+        const model = database.model('Connection', schema);
         return model;
     }
 }

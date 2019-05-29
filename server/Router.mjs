@@ -1,7 +1,7 @@
 import Handler from './Handler';
 import * as Middleware from './middlewares';
 
-export default class Router {
+export default class {
     constructor (server, routes) {
         this.server = server;
         this.routes = routes;

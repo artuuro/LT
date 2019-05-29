@@ -1,5 +1,5 @@
-export default class authenticationController {
-    async post(req, res) {
+export default class {
+    async post(req, _res) {
         const { User } = this.models;
         const { JWT_SIGN } = this.config;
 

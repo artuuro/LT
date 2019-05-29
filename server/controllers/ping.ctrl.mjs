@@ -1,4 +1,4 @@
-export default class pingController {
+export default class {
     async get(__req, reply) {
         await reply.type('application/json').code(200);
         

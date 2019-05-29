@@ -1,15 +1,16 @@
 export default {
     'MONGODB': {
-        'uri': 'mongodb://localhost:27017/little-town'
+        'uri': 'mongodb://localhost:27017/LT'
     },
     'SSL': false,
+    'HTTP2': false,
     'SWAGGER': {
         routePrefix: '/docs',
         exposeRoute: true,
         swagger: {
             info: {
-                title: 'API Specifications',
-                description: 'API documentation',
+                title: 'API',
+                description: 'Documentation',
                 version: '0.0.8'
             },
             securitySchemes: {
@@ -22,8 +23,7 @@ export default {
                     scheme: 'bearer'
                 }
             },
-            host: 'localhost',
-            schemes: ['https', 'http', 'ws'],
+            schemes: ['http', 'https'],
             consumes: ['application/json'],
             produces: ['application/json', 'text/html']
         }

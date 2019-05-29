@@ -9,13 +9,13 @@ export default {
     },
     'STATIC': {
         'root': join(process.cwd(), 'public'),
-        'prefix': '/assets/'
+        //'prefix': '/assets/'
     },
     'HELMET': {
         hidePoweredBy: { 
-            setTo: '0.0.7'
+            setTo: 'API 0.0.8'
         }
     },
-    'HTTP2': false,
+    'HTTP2': true,
     'JWT_SIGN': 'SIGN_KEY_HERE'
 };

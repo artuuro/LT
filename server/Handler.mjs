@@ -1,6 +1,6 @@
 import * as control from './controllers';
 
-export default class Handler {
+export default class {
     constructor (name, server) {
         if (!control[name]) 
             return server.log.error(`Controller [${name}] not found`);
