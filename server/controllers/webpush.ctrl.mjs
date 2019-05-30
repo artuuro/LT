@@ -6,8 +6,9 @@ export default class {
      */
     
     post(req, res) {
-        console.log(req.body);
-        // req.body is the data we can use as `target` specified on `get` action
+        const target = req.body; // req.body is the data we can use as `target` specified on `get` action
+        // todo: save target
+        
         return JSON.stringify({
             message: 'success'
         });

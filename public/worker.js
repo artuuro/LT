@@ -32,7 +32,7 @@ const getPublicKey = async () => {
     return response.json();
 }
 
-self.oninstall = event => {
+self.addEventListener('install', event => {
     self.skipWaiting();
     event.waitUntil(caches.open('LT')
         .then(cache => {
@@ -46,7 +46,7 @@ self.oninstall = event => {
                 })
             ));
         }));
-};
+});
 
 self.addEventListener('fetch', event => {
     event.respondWith(
