@@ -1,0 +1,17 @@
+{
+    "name": "LT APP",
+    "short_name": "LT",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#000",
+    "background_color": "#fff",
+    "icons": [{
+      "src": "https://via.placeholder.com/192x192",
+      "sizes": "192x192",
+      "type": "image/png"
+    },{
+      "src": "https://via.placeholder.com/512x512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }]
+  }

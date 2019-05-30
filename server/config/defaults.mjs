@@ -7,6 +7,10 @@ export default {
         'key': readFileSync(join(process.cwd(), 'certification', 'localhost-privkey.pem')),
         'cert': readFileSync(join(process.cwd(), 'certification', 'localhost-cert.pem'))
     },
+    'PUSH': {
+        'PUBLIC': 'BEHYXoqKY3swXI3BAOWVKjydgkqTbPetkURiKDx571rriEkWEpRTKR4CgdVVCmk7bXF3Q94umHG0J4DeW-B1IY0',
+        'PRIVATE': 'RdqmUHWWL4LEtQOGy8oURSrRPRsz1pfrui75CYM-VWU'
+    },
     'STATIC': {
         'root': join(process.cwd(), 'public'),
         //'prefix': '/assets/'

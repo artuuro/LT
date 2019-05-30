@@ -2,8 +2,9 @@ export default {
     'MONGODB': {
         'uri': 'mongodb://localhost:27017/LT'
     },
-    'SSL': false,
     'HTTP2': false,
+    'SSL': false,
+    'PORT': 80,
     'SWAGGER': {
         routePrefix: '/docs',
         exposeRoute: true,
