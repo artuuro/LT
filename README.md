@@ -18,7 +18,8 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 ### Run:
 - Development: 
     * `yarn dev` - Runs API server with nodemon and remote debugger
-
+    * `yarn test` - Same as above, includes automated testing
+    
 - Production:
     * `yarn prod` - Runs API server without logging
 
