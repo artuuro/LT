@@ -2,6 +2,8 @@ import webpush from 'web-push';
 import gracefulShutdown from 'fastify-graceful-shutdown';
 import serveStatic from 'fastify-static';
 import mongoose from 'fastify-mongoose';
+import templating from 'point-of-view';
+import pug from 'pug';
 import { Database, Router } from './';
 
 export default class {
@@ -35,6 +37,16 @@ export default class {
                     instance.config.PUSH.PRIVATE
                 );
                 instance.server.push = (subscription, data) => webpush.sendNotification(subscription, data);
+            }
+        }, {
+            NAME: 'TEMPLATING',
+            hook: () => {
+                instance.server.register(templating, {
+                    engine: {
+                        pug: pug,
+                        templates: 'client'
+                    }
+                });
             }
         }, {
             name: false,

@@ -5,6 +5,7 @@ const instance = new Loader({
         'API',
         'DATABASE',
         'STATIC',
+        'TEMPLATING'
         //'WEBPUSH', // webpush.ctrl for more
     ]
 });

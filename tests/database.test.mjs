@@ -3,10 +3,6 @@ export default class {
         this.database = instance.database;
     }
 
-    someFailingCondition() {
-        return false;
-    }
-
     checkConnection() {
         return this.database.connection._readyState === 1;
     }
@@ -22,9 +18,6 @@ export default class {
         }, {
             desc: 'is connected',
             check: this.checkConnection()
-        }, {
-            desc: 'will fail intentionally',
-            check: this.someFailingCondition()
         }];
     }
 }

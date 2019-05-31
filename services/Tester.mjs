@@ -11,18 +11,17 @@ export default class {
     async run() {
         const { log } = this.instance.server;
 
-        log.info(`Queued tests: [${this.testNames.join(', ')}]`);
+        log.info(`Queued tests -> [${this.testNames.join(', ')}]`);
 
         for (const feature of this.testNames) {
+            log.info(`Testing -> ${feature}`)
             const tester = new Tests[feature](this.instance);
             const tests = await tester.conditions();
             const failedConditions = [];
 
-            log.info(`Testing -> ${feature}`)
-
             for (const { desc, check } of tests) {
                 if (check) {
-                    log.info(`(PASS) [${feature}] ${desc}`);
+                    log.info(`${feature} -> ${desc} [ok]`);
                 } else {
                     failedConditions.push(desc);
                 }
@@ -33,10 +32,7 @@ export default class {
                     test: feature,
                     conditions: failedConditions
                 });
-            } else {
-                this.instance.server.log.info(`[${feature}] all conditions passed`);
             }
-
         }
 
         if (this.failed.length) {
