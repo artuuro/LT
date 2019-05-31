@@ -1,3 +1,8 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-extra-parens */
+/* eslint-disable no-useless-escape */
+/* eslint-disable require-unicode-regexp */
+/* eslint-disable no-console */
 const urlB64ToUint8Array = base64String => {
     const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
     const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
@@ -34,35 +39,28 @@ const getPublicKey = async () => {
 
 self.addEventListener('install', event => {
     self.skipWaiting();
-    event.waitUntil(caches.open('LT')
-        .then(cache => {
-            return cache.addAll([
-                '/',
-                '/index.html',
-                '/manifest.json'
-            ].map(
-                url => new Request(url, {
-                    credentials: 'same-origin'
-                })
-            ));
-        }));
+    event.waitUntil(caches.open('LT').then(cache => cache.addAll([
+        '/',
+        '/index.html',
+        '/manifest.json'
+    ].map(url => new Request(url, {
+        credentials: 'same-origin'
+    })))));
 });
 
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-        .then(response => response || fetch(event.request))
-    );
+    event.respondWith(caches.match(event.request)
+        .then(response => response || fetch(event.request)));
 });
 
 self.addEventListener('activate', async () => {
     try {
         const { key } = await getPublicKey();
-        console.log(key);
         const applicationServerKey = urlB64ToUint8Array(key);
-        
-        const subscription = await self.registration.pushManager.subscribe({ 
-            applicationServerKey, userVisibleOnly: true 
+
+        const subscription = await self.registration.pushManager.subscribe({
+            applicationServerKey,
+            userVisibleOnly: true
         });
 
         await saveSubscription(subscription);
@@ -72,10 +70,10 @@ self.addEventListener('activate', async () => {
     }
 });
 
-self.addEventListener('push',  event => {
+self.addEventListener('push', event => {
     if (event.data) {
         const data = event.data.json();
-       
+
         if (data.title && data.message)
             notification(data.title, data.message, self.registration);
     }

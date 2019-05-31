@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 const registerServiceWorker = async () => {
     await navigator.serviceWorker.register('worker.js');
 }
@@ -11,10 +13,11 @@ const requestNotificationPermission = async () => {
 
 const subscribe = async () => {
     await requestNotificationPermission();
-}
+};
 
-(async () => {
+const run = async () => {
     await registerServiceWorker();
-    // Debug:
     navigator.serviceWorker.onmessage = e => console.log(e);
-})
+};
+
+run();

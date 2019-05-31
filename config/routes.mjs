@@ -48,7 +48,7 @@ export default [{
             }
         }
     }
-}, {
+}, /*{
     path: 'api/push',
     method: 'POST',
     controller: 'webpush',
@@ -69,6 +69,20 @@ export default [{
     schema: {
         description: 'Trigger test push',
         summary: 'WEB push',
+        response: {
+            200: {
+                description: 'Successful response',
+                type: 'object'
+            }
+        }
+    }
+},*/ {
+    path: 'api/ping',
+    method: 'GET',
+    controller: 'ping',
+    schema: {
+        description: 'Simple ping endpoint',
+        summary: 'Returns ',
         response: {
             200: {
                 description: 'Successful response',

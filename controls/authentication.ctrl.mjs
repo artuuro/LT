@@ -1,5 +1,5 @@
 export default class {
-    async post(req, _res) {
+    async post(req) {
         const { User } = this.models;
         const { JWT_SIGN } = this.config;
 

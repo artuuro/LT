@@ -1,5 +1,5 @@
 import Handler from './Handler';
-import * as Middleware from './middlewares';
+import * as Middleware from '../middlewares';
 
 export default class {
     constructor (server, routes) {
