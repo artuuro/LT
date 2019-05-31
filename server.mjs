@@ -1,11 +1,11 @@
-import Loader from './server/Loader';
+import Loader from './services/Loader';
 
 const instance = new Loader({
     'features': [
         'API',
         'DATABASE',
         'STATIC',
-        'WEBPUSH'
+        //'WEBPUSH', // webpush.ctrl for more
     ]
 });
 

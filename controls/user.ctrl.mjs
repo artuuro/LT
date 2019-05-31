@@ -6,6 +6,6 @@ export default class {
 
         await instance.save();
         
-        return JSON.stringify(store);
+        return JSON.stringify(instance);
     }
 }

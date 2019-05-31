@@ -11,10 +11,9 @@ const requestNotificationPermission = async () => {
 
 const subscribe = async () => {
     await requestNotificationPermission();
-}
+};
 
 (async () => {
     await registerServiceWorker();
-    // Debug:
     navigator.serviceWorker.onmessage = e => console.log(e);
-})
+}); 

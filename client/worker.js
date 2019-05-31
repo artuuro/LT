@@ -58,11 +58,11 @@ self.addEventListener('fetch', event => {
 self.addEventListener('activate', async () => {
     try {
         const { key } = await getPublicKey();
-        console.log(key);
         const applicationServerKey = urlB64ToUint8Array(key);
         
         const subscription = await self.registration.pushManager.subscribe({ 
-            applicationServerKey, userVisibleOnly: true 
+            applicationServerKey, 
+            userVisibleOnly: true 
         });
 
         await saveSubscription(subscription);

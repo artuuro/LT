@@ -1,4 +1,4 @@
-import * as control from './controllers';
+import * as control from '../controls';
 
 export default class {
     constructor (name, server) {
@@ -7,4 +7,4 @@ export default class {
             
         return new control[name](server);
     }
-};
+}

@@ -27,11 +27,15 @@ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' \
 - Or just visit `https://localhost` and click on 'DOCUMENTATION' url.
 
 ### Project strucuture:
-- `server` - Core classes to do controller / routing magic.
-- `server/models/*.mjs` - mongoose models.
-- `server/models/functions/*.fn.mjs` - mongoose model functions.
-- `server/controllers/*.ctrl.mjs` - Controllers linked to route definitions.
-- `server/config/default.mjs` - Default configuration for all environments.
-- `server/config/env.*.mjs` - Environment specific configuration.
-- `server/config/routes.mjs` - Route definitions.
-- `server/middlewares/*.mjs` - Route middlewares.
+- `services/*.mjs` - Services connecting everything together.
+- `config/default.mjs` - Default configuration for all environments.
+- `config/env.*.mjs` - Environment specific configuration.
+- `models/*.mjs` - mongoose models.
+- `models/functions/*.fn.mjs` - mongoose model functions.
+- `config/routes.mjs` - Routes.
+- `controls/*.ctrl.mjs` - Route controls.
+- `middlewares/*.mjs` - Control middlewares.
+- `tests/*.test.mjs` - Tests.
+- `client/*` - Static PWA (WIP).
+
+_New tests, controls, middlewares and models must be imported/exported at respective folders `index.mjs` file_

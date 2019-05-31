@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import * as definitions from './models';
+import * as definitions from '../models';
 
 export default class {
     constructor(server) {

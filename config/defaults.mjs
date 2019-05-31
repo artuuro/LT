@@ -12,7 +12,7 @@ export default {
         'PRIVATE': 'RdqmUHWWL4LEtQOGy8oURSrRPRsz1pfrui75CYM-VWU'
     },
     'STATIC': {
-        'root': join(process.cwd(), 'public'),
+        'root': join(process.cwd(), 'client'),
         //'prefix': '/assets/'
     },
     'HELMET': {

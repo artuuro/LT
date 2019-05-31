@@ -1,11 +1,17 @@
 import { connectionFn } from './functions';
 
 export default class {
-    constructor (database, Schema) {
+    constructor(database, Schema) {
         const schema = new Schema({
             user: {
-                type: Schema.Types.ObjectId, 
-                ref: 'User'
+                type: Schema.Types.ObjectId,
+                ref: 'User',
+                required: false
+            },
+            pushConfig: {
+                type: Object,
+                requied: false,
+                default: false
             },
             isAlive: {
                 type: Boolean,
