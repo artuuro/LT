@@ -48,7 +48,7 @@ export default [{
             }
         }
     }
-}, /*{
+}, {
     path: 'api/push',
     method: 'POST',
     controller: 'webpush',
@@ -67,7 +67,7 @@ export default [{
     method: 'GET',
     controller: 'webpush',
     schema: {
-        description: 'Trigger test push',
+        description: 'Returns public push key',
         summary: 'WEB push',
         response: {
             200: {
@@ -76,13 +76,14 @@ export default [{
             }
         }
     }
-},*/ {
+}, {
     path: 'api/ping',
     method: 'GET',
     controller: 'ping',
+    middlewares: ['Authentication'],
     schema: {
-        description: 'Simple ping endpoint',
-        summary: 'Returns ',
+        description: 'ping-pong',
+        summary: 'Returns pong',
         response: {
             200: {
                 description: 'Successful response',

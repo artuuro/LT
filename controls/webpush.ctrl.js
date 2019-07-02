@@ -5,17 +5,17 @@ export default class {
      * - fetch subscription from db
      */
     
-    post() {
+    async post(req) {
         // req.body is the data we can use as `target` specified on `get` action
         // todo: save target
         
         return JSON.stringify({
-            message: 'success'
+            message: 'success',
+            ...req.body
         });
     }
 
     async get() {
-        // SEND PUSH
         /*
           const target = {
             endpoint: 'https://fcm.googleapis.com/fcm/send/dAqum4neT34:APA91bE_Wb3liDlgzCbDDoywvyS65sIj8nSaScxg7FFYTfLUOYqWWuuHZBgINVXWTPGoo0DWGzzl5e0dNw1sE6ptcoWMgwTHp-vg4uWDha5pAL5VHXAZDZSynDOHRvBlDmEH9QcOJUXm',

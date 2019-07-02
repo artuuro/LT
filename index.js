@@ -1,11 +1,11 @@
-import Loader from './services/Loader';
+import { Server } from './core';
 
-const instance = new Loader({
-    'features': [
+const instance = new Server({
+    'services': [
+        'PWA',
         'API',
         'DATABASE',
         'STATIC',
-        'TEMPLATING'
         //'WEBPUSH', // webpush.ctrl for more
     ]
 });

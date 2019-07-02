@@ -1,9 +1,9 @@
-import * as Tests from '../tests';
+import * as runners from '../tests';
 
 export default class {
     constructor(instance) {
         this.instance = instance;
-        this.testNames = Object.keys(Tests);
+        this.testNames = Object.keys(runners);
         this.tests = new Set(this.tests);
         this.failed = [];
     }
@@ -14,13 +14,13 @@ export default class {
         log.info(`Queued tests -> [${this.testNames.join(', ')}]`);
 
         for (const feature of this.testNames) {
-            log.info(`Testing -> ${feature}`)
-            const tester = new Tests[feature](this.instance);
-            const tests = await tester.conditions();
+            log.info(`Testing -> ${feature}`);
+            const runner = new runners[feature](this.instance);
             const failedConditions = [];
+            const conditions = await runner.conditions();
 
-            for (const { desc, check } of tests) {
-                if (check) {
+            for (const { desc, test } of conditions) {
+                if (test) {
                     log.info(`${feature} -> ${desc} [ok]`);
                 } else {
                     failedConditions.push(desc);

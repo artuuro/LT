@@ -4,7 +4,6 @@ import development from './env.development';
 import production from './env.production';
 import test from './env.test';
 
-
 const env = process.env.NODE_ENV.trim();
 
 export default (params) => {
@@ -15,11 +14,11 @@ export default (params) => {
 
     switch (env) {
     case 'development':
-        configuration = Object.assign(configuration, production);
+        configuration = Object.assign(configuration, development);
         configuration.development = true;
         break;
     case 'production':
-        configuration = Object.assign(configuration, development);
+        configuration = Object.assign(configuration, production);
         configuration.development = false;
         break;
     case 'test':

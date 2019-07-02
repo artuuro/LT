@@ -1,9 +1,9 @@
-import User from './User.model';
+import Customer from './Customer.model';
 import Authentication from './Authentication.model';
 import Connection from './Connection.model';
 
 export {
-    User,
+    Customer,
     Authentication,
     Connection
 };

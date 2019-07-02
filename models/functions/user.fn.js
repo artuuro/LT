@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export default class {
-    static token(user, key) {
+    static signToken(user, key) {
         return jwt.sign(user, key, { expiresIn: '24h' });
     }
 

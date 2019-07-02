@@ -1,8 +1,8 @@
 export default class {
     async post(req) {
-        const { User } = this.database.models;
+        const { Customer } = this.database.models;
 
-        const instance = new User({ ...req.body });
+        const instance = new Customer({ ...req.body });
 
         await instance.save();
         

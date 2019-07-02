@@ -2,7 +2,12 @@ import 'isomorphic-unfetch';
 
 export default class {
     constructor(instance) {
+        this.server = instance.server;
         this.config = instance.config;
+    }
+
+    instanceExists() {
+        return Boolean(this.server);
     }
 
     async canPing() {
@@ -12,10 +17,12 @@ export default class {
     }
 
     async conditions() {
-        const canPing = await this.canPing();
         return [{
+            desc: 'instance exists',
+            test: this.instanceExists()
+        }, {
             desc: 'can ping',
-            check: canPing
+            test: await this.canPing()
         }];
     }
 }

@@ -1,15 +1,13 @@
-import Loader from './Loader';
+import Server from './Server';
 import Database from './Database';
 import Router from './Router';
-import Registry from './Registry';
 import Tester from './Tester';
 import config from '../config';
 
 export {
-    Loader,
+    Server,
     Database,
     Router,
-    Registry,
     Tester,
     config
 }

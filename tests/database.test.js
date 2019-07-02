@@ -14,10 +14,10 @@ export default class {
     async conditions() {
         return [{
             desc: 'has models loaded',
-            check: await this.hasModels()
+            test: await this.hasModels()
         }, {
             desc: 'is connected',
-            check: this.checkConnection()
+            test: this.checkConnection()
         }];
     }
 }
