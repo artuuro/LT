@@ -3,11 +3,11 @@
   "version": "0.0.8",
   "description": "API Boilerplate using Fastify & MongoDB",
   "type": "module",
-  "main": "index.mjs",
+  "main": "index.js",
   "scripts": {
-    "dev": "set NODE_ENV=development && nodemon --es-module-specifier-resolution=node --experimental-modules --no-warnings --inspect ./server",
-    "test": "set NODE_ENV=test && nodemon --es-module-specifier-resolution=node --experimental-modules --no-warnings --inspect ./server",
-    "prod": "set NODE_ENV=production && node --es-module-specifier-resolution=node --experimental-modules --no-warnings ./server"
+    "dev": "set NODE_ENV=development && nodemon --es-module-specifier-resolution=node --experimental-modules --no-warnings --inspect ./",
+    "test": "set NODE_ENV=test && nodemon --es-module-specifier-resolution=node --experimental-modules --no-warnings --inspect ./",
+    "prod": "set NODE_ENV=production && node --es-module-specifier-resolution=node --experimental-modules --no-warnings ./"
   },
   "author": "Arthur G.",
   "license": "UNLICENSED",
@@ -22,8 +22,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.5.3",
     "pino-pretty": "^3.1.0",
-    "point-of-view": "^3.5.0",
-    "pug": "^2.0.3",
     "web-push": "^3.3.5"
   },
   "nodemonConfig": {
@@ -32,5 +30,8 @@
       "certification/*"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-plugin-react": "^7.13.0",
+    "webpack-cli": "^3.3.4"
+  }
 }
