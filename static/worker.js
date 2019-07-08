@@ -27,6 +27,7 @@ const saveSubscription = async subscription => {
         },
         body: JSON.stringify(subscription)
     });
+    console.log('from push', response);
     return response.json();
 };
 
@@ -34,6 +35,7 @@ const getPublicKey = async () => {
     const response = await fetch('/api/push', {
         method: 'GET'
     });
+    console.log('push pub', response);
     return response.json();
 }
 

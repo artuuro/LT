@@ -1,1 +1,1 @@
-navigator.serviceWorker.register('static/worker.js');
+navigator.serviceWorker.register('/worker.js');

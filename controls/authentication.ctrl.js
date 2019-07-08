@@ -5,8 +5,8 @@ export default class {
 
         const instance = await User.checkExistence(req.body.username);
 
-        if ( !instance ) {
-            let error = new Error('NOT_FOUND');
+        if (!instance) {
+            let error = new Error('USER_NOT_FOUND');
             error.statusCode = 404;
             throw error;
         }

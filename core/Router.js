@@ -27,7 +27,7 @@ export default class {
     link() {
         for (let route of this.routes) {
             const handler = new Handler(route.controller, this.server);
-            route.path = route.top ? `/api/${route.path}` : `/${route.path}`;
+            route.path = route.unique ? `/${route.path}` : `/api/${route.path}`;
             route.handler = handler[route.method.toLowerCase()];
 
             if (route.middlewares) this.assignMiddlewares(route);
