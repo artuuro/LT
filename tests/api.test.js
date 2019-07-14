@@ -6,22 +6,17 @@ export default class {
     }
 
     async test() {
-        // console.log(this.routes);
-        /**
-         * How this will happen?
-         * - iterate through routes
-         * - setup fetch configuration for each of them
-         * - promise all of them
-         * - return issues / non-issues
-         */
+ 
         return true; //haha
     }
 
     async conditions() {
+        
         const results = [{
             desc: 'routes awailable',
-            test: await this.test()
+            test: await this.test() // true
         }];
+
         return results;
     }
 }

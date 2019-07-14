@@ -43,7 +43,6 @@ self.addEventListener('install', event => {
     self.skipWaiting();
     event.waitUntil(caches.open('LT').then(cache => cache.addAll([
         '/',
-        '/index.html',
         '/manifest.json'
     ].map(url => new Request(url, {
         credentials: 'same-origin'

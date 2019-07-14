@@ -4,15 +4,7 @@ class Authentication {
         this.allow = true;
     }
 
-    async handleRightsCheck () {
-
-    }
-
-
     async handle(req) {
-        // change this
-
-
         this.server.log.info(req.headers);
 
         if (this.allow) return true;

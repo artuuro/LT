@@ -2,7 +2,6 @@ export default class {
     async post(req) {
         const { User } = this.models;
         const { JWT_SIGN } = this.config;
-
         const instance = await User.checkExistence(req.body.username);
 
         if (!instance) {
