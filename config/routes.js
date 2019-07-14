@@ -1,5 +1,5 @@
 export default [{
-    path: 'api/user',
+    path: 'user',
     method: 'POST',
     controller: 'user',
     schema: {
@@ -24,7 +24,7 @@ export default [{
         }
     }
 }, {
-    path: 'api/user/auth',
+    path: 'user/auth',
     method: 'POST',
     controller: 'authentication',
     schema: {
@@ -49,7 +49,7 @@ export default [{
         }
     }
 }, {
-    path: 'api/push',
+    path: 'push',
     method: 'POST',
     controller: 'webpush',
     schema: {
@@ -63,12 +63,12 @@ export default [{
         }
     }
 }, {
-    path: 'api/push',
+    path: 'push',
     method: 'GET',
     controller: 'webpush',
     schema: {
-        description: 'Returns public push key',
-        summary: 'WEB push',
+        description: 'WEB PUSH Auth key',
+        summary: 'GET public web-push key',
         response: {
             200: {
                 description: 'Successful response',
@@ -77,7 +77,7 @@ export default [{
         }
     }
 }, {
-    path: 'api/ping',
+    path: 'ping',
     method: 'GET',
     controller: 'ping',
     middlewares: ['Authentication'],
@@ -92,6 +92,7 @@ export default [{
         }
     }
 }, {
+    unique: true,
     path: '',
     method: 'GET',
     controller: 'pwa'

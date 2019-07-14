@@ -1,5 +1,5 @@
 export default class {
-    async get(__request, reply) {
+    async get() {
         const response = {
             message: 'PONG',
             development: this.config.development,

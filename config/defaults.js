@@ -13,7 +13,7 @@ export default {
     },
     'STATIC': {
         'root': join(process.cwd(), 'static'),
-        'prefix': '/static/'
+        'prefix': '/'
     },
     'HELMET': {
         hidePoweredBy: { 

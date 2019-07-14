@@ -4,7 +4,9 @@ export default class {
      * - Implement templating
      * - Think about SSR
      */
-    get(req, res) {
-        res.sendFile('index.html');
+    get(_req, res) {
+        res.view('index', {
+            message: `Hello world!`
+        });
     }
 }

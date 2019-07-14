@@ -10,4 +10,4 @@ export {
     ping,
     pwa,
     webpush
-};
+}

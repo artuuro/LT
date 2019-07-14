@@ -1,6 +1,8 @@
 import fastify from 'fastify';
 import swagger from 'fastify-swagger';
-//import webpush from 'web-push';
+import webpush from 'web-push';
+import POW from 'point-of-view';
+import pug from 'pug';
 import gracefulShutdown from 'fastify-graceful-shutdown';
 import serveStatic from 'fastify-static';
 import mongoose from 'fastify-mongoose';
@@ -47,28 +49,41 @@ export default class {
             name: 'DATABASE',
             hook: () => {
                 this.server.register(mongoose, this.config.MONGODB)
-                .after(() => {
-                    this.database = new Database(this.server);
-                    this.database.load();
-                    this.server.log.info(`MongoDB connected`);
-                });
+                    .after(() => {
+                        this.database = new Database(this.server);
+                        this.database.load();
+                        this.server.log.info(`MongoDB connected`);
+                    });
             }
         }, {
             name: 'STATIC',
             hook: () => {
                 this.server.register(serveStatic, this.config.STATIC);
             }
-        }, /* {
-                // TODO:
-                name: 'WEBPUSH',
-                hook: () => {
-                    webpush.setVapidDetails(
-                        `http://localhost:${self.config.PORT}`,
-                        ...this.config.push
-                    );
-                    this.server.push = (subscription, data) => webpush.sendNotification(subscription, data);
-                }
-            },*/
+        }, {
+            // TODO:
+            name: 'WEBPUSH',
+            hook: () => {
+                webpush.setVapidDetails(
+                    `http://localhost:${self.config.PORT}`,
+                    ...this.config.push
+                );
+                this.server.push = (subscription, data) => webpush.sendNotification(subscription, data);
+            }
+        },
+        {
+            name: 'PWA',
+            hook: () => {
+                this.server.register(POW, {
+                    engine: {
+                        pug: pug
+                    },
+                    includeViewExtension: true,
+                    templates: 'templates',
+                    options: this.config.PUG || {}
+                });
+            }
+        },
         {
             name: 'API',
             hook: () => {
@@ -76,6 +91,7 @@ export default class {
                 this.routing.link();
             }
         }, {
+            // always loaded by default
             name: false,
             hook: () => {
                 this.server.register(gracefulShutdown);
